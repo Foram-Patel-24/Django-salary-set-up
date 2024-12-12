@@ -1,0 +1,21 @@
+<h1>Salary Schedule List</h1>
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Payment Day</th>
+        <th>Payment Frequency</th>
+        <th>Actions</th>
+    </tr>
+    {% for schedule in schedules %}
+    <tr>
+        <td>{{ schedule.name }}</td>
+        <td>{{ schedule.payment_day }}</td>
+        <td>{{ schedule.payment_frequency }}</td>
+        <td>
+            <a href="{% url 'salary_schedule_update' schedule.id %}">Edit</a> |
+            <a href="{% url 'salary_schedule_delete' schedule.id %}">Delete</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+<a href="{% url 'salary_schedule_create' %}">Add New Salary Schedule</a>

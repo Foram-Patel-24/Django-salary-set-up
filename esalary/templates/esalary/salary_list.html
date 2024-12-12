@@ -1,0 +1,25 @@
+<h1>Salary List</h1>
+<table>
+    <tr>
+        <th>Employee</th>
+        <th>Basic Salary</th>
+        <th>Bonuses</th>
+        <th>Deductions</th>
+        <th>Total Salary</th>
+        <th>Actions</th>
+    </tr>
+    {% for salary in salaries %}
+    <tr>
+        <td>{{ salary.employee.first_name }} {{ salary.employee.last_name }}</td>
+        <td>{{ salary.basic_salary }}</td>
+        <td>{{ salary.bonuses }}</td>
+        <td>{{ salary.deductions }}</td>
+        <td>{{ salary.total_salary }}</td>
+        <td>
+            <a href="{% url 'salary_update' salary.id %}">Edit</a> |
+            <a href="{% url 'salary_delete' salary.id %}">Delete</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+<a href="{% url 'salary_create' %}">Add New Salary</a>
